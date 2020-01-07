@@ -20,5 +20,6 @@ jobs:
       - run: |
           git config --global user.email dansonline@gmail.com
           git config --global user.name danspano
+          git show-ref
           git commit -a -m "update"
           git push -u origin master -f

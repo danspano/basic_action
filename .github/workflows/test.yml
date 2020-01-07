@@ -20,7 +20,5 @@ jobs:
       - run: |
           git config --global user.email dansonline@gmail.com
           git config --global user.name danspano
-          git status
-          git add dist/index.js
-          git commit -m "update"
+          git commit -a -m "update"
           git push -u origin master -f

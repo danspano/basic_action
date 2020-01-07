@@ -14,3 +14,12 @@ jobs:
     - run: |
         npm install
         npm run all
+    - run: |
+        git config --global user.email dansonline@gmail.com
+        git config --global user.name danspano
+        git status
+        git remote add origin https://${{secrets.COMMIT_SECRET}}@github.com/danspano/basic_action.git
+        git checkout -b master
+        git add dist/index.js
+        git commit -m "update"
+        git push origin master -f

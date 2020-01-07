@@ -10,15 +10,17 @@ jobs:
   build: # make sure build/ci work properly
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - run: |
-        npm install
-        npm run all
-    - run: |
-        git config --global user.email dansonline@gmail.com
-        git config --global user.name danspano
-        git status
-        git remote add origin https://${{secrets.COMMIT_SECRET}}@github.com/danspano/basic_action.git
-        git add dist/index.js
-        git commit -m "update"
-        git push origin master -f
+      - uses: webfactory/ssh-agent@v0.1.1
+        with:
+            ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - uses: actions/checkout@v1
+      - run: |
+          npm install
+          npm run all
+      - run: |
+          git config --global user.email dansonline@gmail.com
+          git config --global user.name danspano
+          git status
+          git add dist/index.js
+          git commit -m "update"
+          git push origin master -f

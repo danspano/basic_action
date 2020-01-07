@@ -20,6 +20,8 @@ jobs:
       - run: |
           git config --global user.email dansonline@gmail.com
           git config --global user.name danspano
-          git show-ref
-          git commit -a -m "update"
-          git push -u origin master -f
+          git commit -m "Add changes" -a
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.COMMIT_SECRET }}

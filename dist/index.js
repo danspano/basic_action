@@ -83,7 +83,7 @@ function run() {
             yield wait_1.wait(parseInt(ms, 10));
             core.debug(new Date().toTimeString());
             // tslint:disable-next-line:no-console
-            console.log('Hello!');
+            console.log('Hello v2!');
             core.setOutput('time', new Date().toTimeString());
         }
         catch (error) {
